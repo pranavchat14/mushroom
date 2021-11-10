@@ -7,15 +7,26 @@ stages:
       md5: 20e36f0bcc0fec359eb394ee947237dd
       size: 374003
     - path: train.py
-      md5: 2411523d15a434e3e8a4173630f30624
-      size: 1273
+      md5: cbbccbca276cc05df03133d02676b43b
+      size: 3446
+    params:
+      params.yaml:
+        train.max_depth: 2
+        train.n_estimators: 10
+        train.seed: 42
     outs:
     - path: metrics.txt
-      md5: 1a4db4b009143be3dbcee850c1f07204
-      size: 48
+      md5: 8154a5acc652570e4c7105429fe529da
+      size: 46
+    - path: prc.json
+      md5: 6950f990d7b0d5ceb468ac8f152aca88
+      size: 281
     - path: rf.pkl
-      md5: f8cd88560918e5f5408b65dac15cc09b
-      size: 474775
+      md5: 065e9a69c533969dae829bc8a599396b
+      size: 9105
+    - path: roc.json
+      md5: 9595ff11baaadf5302372526a35191f4
+      size: 347
     - path: scores.json
-      md5: fe02e5d76baa2471a2d779f4717735c8
-      size: 25
+      md5: cef576473e8e21c75c4b8ff422ab9d03
+      size: 37

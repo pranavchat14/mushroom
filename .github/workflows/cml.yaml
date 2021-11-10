@@ -1,0 +1,28 @@
+name: model-wine-quality
+on: [push]
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    steps:
+      - uses: actions/checkout@v2
+      - name: cml_run
+        shell: bash
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        run: |
+          # Install requirements
+          pip install -r requirements.txt
+
+          # Pull data & run-cache from gdrive and reproduce pipeline
+          dvc pull mushrooms.csv
+          dvc exp run
+
+          echo "## Model metrics" > report.md
+          cat metrics.txt >> report.md
+          
+          echo "## Data viz" >> report.md
+          cml-publish feature_importance.png --md >> report.md
+          
+          cml-send-comment report.md

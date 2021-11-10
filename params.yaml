@@ -1,0 +1,5 @@
+train:
+  seed: 42
+  n_estimators: 10
+  max_depth: 2
+  min_samples_split: 2

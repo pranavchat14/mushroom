@@ -4,11 +4,21 @@ stages:
     deps:
     - mushrooms.csv
     - train.py
-    metrics:
-    - scores.json
     outs:
     - metrics.txt
     - rf.pkl
+    metrics:
+    - scores.json
     plots:
+    - prc.json:
+        cache: false
+        x: recall
+        y: precision
     - roc.json:
         cache: false
+        x: fpr
+        y: tpr
+    params:
+    - train.max_depth
+    - train.n_estimators
+    - train.seed
