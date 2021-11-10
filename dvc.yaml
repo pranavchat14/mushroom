@@ -9,3 +9,6 @@ stages:
     outs:
     - metrics.txt
     - rf.pkl
+    plots:
+    - roc.json:
+        cache: false

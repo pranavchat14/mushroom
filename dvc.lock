@@ -1,0 +1,21 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - path: mushrooms.csv
+      md5: 20e36f0bcc0fec359eb394ee947237dd
+      size: 374003
+    - path: train.py
+      md5: 2411523d15a434e3e8a4173630f30624
+      size: 1273
+    outs:
+    - path: metrics.txt
+      md5: 1a4db4b009143be3dbcee850c1f07204
+      size: 48
+    - path: rf.pkl
+      md5: f8cd88560918e5f5408b65dac15cc09b
+      size: 474775
+    - path: scores.json
+      md5: fe02e5d76baa2471a2d779f4717735c8
+      size: 25

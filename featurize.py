@@ -18,8 +18,8 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.3, random_state=seed
 )
 
-y_train = y_train.astype('category').cat.codes
-y_test = y_test.astype('category').cat.codes
+y_train = y_train.astype("category").cat.codes
+y_test = y_test.astype("category").cat.codes
 
 
 ohe = OneHotEncoder(sparse=True)
@@ -35,7 +35,9 @@ rf.fit(X_train_enc, y_train)
 train_score = rf.score(X_train_enc, y_train) * 100
 test_score = rf.score(X_test_enc, y_test) * 100
 
-precision, recall, prc_thresholds = metrics.precision_recall_curve(y_test.values, predictions)
+precision, recall, prc_thresholds = metrics.precision_recall_curve(
+    y_test.values, predictions
+)
 fpr, tpr, roc_thresholds = metrics.roc_curve(y_test, predictions)
 
 avg_prec = metrics.average_precision_score(y_test, predictions)
@@ -49,26 +51,26 @@ feature_df = pd.DataFrame(
 )
 feature_df = feature_df.sort_values(by="importance", ascending=False)
 
-# image formatting
-axis_fs = 18  # fontsize
-title_fs = 22  # fontsize
-sns.set(style="whitegrid", rc={'figure.figsize':(10, 28)})
-ax = sns.barplot(x="importance", y="feature", data=feature_df)
-ax.set_xlabel("Importance", fontsize=axis_fs)
-ax.set_ylabel("Feature", fontsize=axis_fs)  # ylabel
-ax.set_title("Random forest\nfeature importance", fontsize=title_fs)
+# # image formatting
+# axis_fs = 18  # fontsize
+# title_fs = 22  # fontsize
+# sns.set(style="whitegrid", rc={"figure.figsize": (10, 28)})
+# ax = sns.barplot(x="importance", y="feature", data=feature_df)
+# ax.set_xlabel("Importance", fontsize=axis_fs)
+# ax.set_ylabel("Feature", fontsize=axis_fs)  # ylabel
+# ax.set_title("Random forest\nfeature importance", fontsize=title_fs)
 
-plt.tight_layout()
-plt.savefig("feature_importance.png", dpi=120)
-plt.close()
+# plt.tight_layout()
+# plt.savefig("feature_importance.png", dpi=120)
+# plt.close()
 
 nth_point = math.ceil(len(prc_thresholds) / 1000)
 prc_points = list(zip(precision, recall, prc_thresholds))[::nth_point]
-with open('prc.json', "w") as fd:
+with open("prc.json", "w") as fd:
     json.dump(
         {
             "prc": [
-                {"precision": p, "recall": r, "threshold": t}
+                {"precision": float(p), "recall": float(r), "threshold": float(t)}
                 for p, r, t in prc_points
             ]
         },
@@ -76,11 +78,11 @@ with open('prc.json', "w") as fd:
         indent=4,
     )
 
-with open('roc.json', "w") as fd:
+with open("roc.json", "w") as fd:
     json.dump(
         {
             "roc": [
-                {"fpr": fp, "tpr": tp, "threshold": t}
+                {"fpr": float(fp), "tpr": float(tp), "threshold": float(t)}
                 for fp, tp, t in zip(fpr, tpr, roc_thresholds)
             ]
         },
