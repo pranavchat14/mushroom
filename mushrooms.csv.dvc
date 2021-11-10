@@ -1,0 +1,4 @@
+outs:
+- md5: 20e36f0bcc0fec359eb394ee947237dd
+  size: 374003
+  path: mushrooms.csv

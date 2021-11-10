@@ -1,0 +1,16 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - mushrooms.csv
+    - train.py
+    metrics:
+    - scores.json
+    outs:
+    - metrics.txt
+    - rf.pkl
+    plots:
+    - prc.json:
+        cache: false
+    - roc.json:
+        cache: false
