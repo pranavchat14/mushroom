@@ -1,5 +1,5 @@
 train:
-  seed: 42
+  seed: 40
   n_estimators: 5
   max_depth: 5 
   min_samples_split: 3

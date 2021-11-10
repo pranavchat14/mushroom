@@ -1,13 +1,13 @@
 {
     "prc": [
         {
-            "precision": 0.48441345365053323,
+            "precision": 0.48810500410172275,
             "recall": 1.0,
             "threshold": 0.0
         },
         {
-            "precision": 0.9796954314720813,
-            "recall": 0.9805249788314987,
+            "precision": 1.0,
+            "recall": 0.9789915966386554,
             "threshold": 1.0
         }
     ]
