@@ -11,22 +11,22 @@ stages:
       size: 3446
     params:
       params.yaml:
-        train.max_depth: 2
-        train.n_estimators: 10
+        train.max_depth: 5
+        train.n_estimators: 5
         train.seed: 42
     outs:
     - path: metrics.txt
-      md5: 8154a5acc652570e4c7105429fe529da
+      md5: 53350733e57194fae7dd298e395a5892
       size: 46
     - path: prc.json
-      md5: 6950f990d7b0d5ceb468ac8f152aca88
+      md5: 185aac2ffae84c84f5b2c7863773a02c
       size: 281
     - path: rf.pkl
-      md5: 065e9a69c533969dae829bc8a599396b
-      size: 9105
+      md5: f8a4b97fcc35e645b3af7aea769bca52
+      size: 12414
     - path: roc.json
-      md5: 9595ff11baaadf5302372526a35191f4
-      size: 347
+      md5: 6544d1eef81aa8b2837eab3beca08330
+      size: 346
     - path: scores.json
-      md5: cef576473e8e21c75c4b8ff422ab9d03
+      md5: c8a5bfc7487061e8cdfe937805105899
       size: 37
