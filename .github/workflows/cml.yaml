@@ -1,4 +1,4 @@
-name: model-wine-quality
+name: model-mushroom
 on: [push]
 jobs:
   run:
